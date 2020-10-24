@@ -54,7 +54,7 @@ cur = con.cursor()
 
 #Uncomment the follwing command whe you first run this program.
 #Comment it next time you run the program.
-'''
+
 #Create a table
 cur.execute("""CREATE TABLE test (
     date text,
@@ -69,7 +69,7 @@ cur.execute("""CREATE TABLE test (
 ) """)
 
 con.commit()
-'''
+
 
 #DRINKS check box
 drink_check_1 = Label(drinks_frame,text="Lassi", pady=5,width=15,bg="lightblue")
@@ -353,6 +353,12 @@ def total():
     global time1
     global bill_num
 
+    drink_final_ar = []
+    food_final_ar = [] 
+    drink_cost = []
+    food_cost = []
+    drink = ''
+    food = ''
     drink_amount = 0
     food_amount = 0  
     bill_num = 0
@@ -431,21 +437,12 @@ def total():
     total_cost = drink_amount + food_amount + sc + paid_tax
     total_cost = round(total_cost, 2)
 
-    drink_final_ar = []
-    food_final_ar = []
-    drink_count = []
-    food_count = [] 
-    drink_cost = []
-    food_cost = []
-    drink = ''
-    food = ''
 
     #for drinks
     #All Selected Drink items
     for i in range(len(drink_ar)):
         if drink_ar[i] > 0:
             drink_final_ar.append(drink_dict[i+1][0])
-            drink_count.append(drink_ar[i])
     
     #All Selected Drink items COST
     for i in range(len(drink_ar)):
@@ -454,7 +451,7 @@ def total():
     
     #Final DRINK Array
     for i in range(len(drink_cost)):
-        drink += f'\n   {drink_final_ar[i]} ({drink_count[i]})\t\t    {drink_cost[i]}'
+        drink += f'\n   {drink_final_ar[i]} ({drink_ar[i]})\t\t    {drink_cost[i]}'
     
    
     #for food
@@ -462,7 +459,6 @@ def total():
     for i in range(len(food_ar)):
         if food_ar[i] > 0:
             food_final_ar.append(food_dict[i+1][0])
-            food_count.append(food_ar[i])
     
     #All Selected Food item COST
     for i in range(len(food_ar)):
@@ -471,7 +467,7 @@ def total():
     
     #Final FOOD Array
     for i in range(len(food_cost)):
-        food += f'\n   {food_final_ar[i]} ({food_count[i]})\t\t    {food_cost[i]}'
+        food += f'\n   {food_final_ar[i]} ({food_ar[i]})\t\t    {food_cost[i]}'
     
     final_str = "Bill no:"+ str(bill_num) + "    Date:" + date1 +"\n\t       time: " + time1 +"\n   ========================\n   Item(s)\t\t   Amount\n   ========================\n   " + drink + "\n   " + food + "\n\n   ----------------------\n   " + "Sub Total\t\t   "+ str(sub_total) + "\n   " + "Total\t\t   " + str(total_cost)
 
