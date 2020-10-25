@@ -52,9 +52,9 @@ food_dict = {
 con = sqlite3.connect('example.db')
 cur = con.cursor()
 
-#Uncomment the follwing command whe you first run this program.
+#Uncomment the follwing command when you first run this program.
 #Comment it next time you run the program.
-
+'''
 #Create a table
 cur.execute("""CREATE TABLE test (
     date text,
@@ -69,7 +69,7 @@ cur.execute("""CREATE TABLE test (
 ) """)
 
 con.commit()
-
+'''
 
 #DRINKS check box
 drink_check_1 = Label(drinks_frame,text="Lassi", pady=5,width=15,bg="lightblue")
@@ -553,7 +553,7 @@ def send():
     global bill_generator
     global mail_input
 
-    ex = final_str
+    ex = final_str       
 
     main_label = Label(new, text="Send Bill",background="lightblue",fg="white",width=18,padx=5,pady=5)
     main_label.config(font=("Bold",32))
@@ -582,7 +582,6 @@ def send():
     send_button_2 = Button(new,text="Send Bill",background="lightblue",fg="black",width=18,padx=5,pady=5, command=mail)
     send_button_2.grid(row=5,column=0,columnspan=5,padx=10,pady=30)
 
-    new.quit()
  
     new.mainloop()
 
@@ -679,8 +678,7 @@ def update_gen(val):
         con.commit()
 
 
-def show_data():
-    
+def show_data(): 
     new = Tk()
     new.state('zoomed')
 
@@ -803,9 +801,11 @@ def show_data():
 
         if len(a) == 0:
             messagebox.showerror("ERROR", "Database is Empty")
+            new.destroy()
 
         elif row_val > a[len(a)-1][0]:
             messagebox.showerror("ERROR", "Index out of range")
+            new.destroy()
         else:
             insert_val = a[row_val][value]
             replace_label = Label(frame_update, text="Replacement:")
@@ -865,9 +865,11 @@ def login():
         password = pwd_input.get()
 
         if user == user_dict["username"] and password == user_dict["password"]:
+            log.destroy()
             show_data()
         else:
             messagebox.showerror("INFO","Wrong username or password")
+            log.destroy()
 
 
     button = Button(frame,text="Submit", padx=10, pady=10, width=15, command=check)
