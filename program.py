@@ -810,22 +810,26 @@ def show_data():
             insert_val = a[row_val][value]
             replace_label = Label(frame_update, text="Replacement:")
             replace_label.config(font=("Arial", 15))
-            replace_label.grid(row=9, column=0, padx=10, pady=(10,0))
+            replace_label.grid(row=10, column=0, padx=10, pady=(10,0))
 
             replace_input = Entry(frame_update, width=10)
             replace_input.config(font=("Arial", 15))
-            replace_input.grid(row=10, column=0, padx=10, pady=(0,10))
+            replace_input.grid(row=11, column=0, padx=10, pady=(0,10))
             replace_input.insert(0, insert_val)
 
             update_db = Button(frame_update, text="Update", padx=22, pady=10, bg="violet", fg="white", relief=RAISED, command= lambda: update_gen(val))
             update_db.config(font=("Arial", 16))
-            update_db.grid(row=11, column=0, padx=20, pady=10)
+            update_db.grid(row=12, column=0, padx=20, pady=10)
 
-    Radiobutton(frame_update, text='Bill No.', variable=choice, value=3, font=("Arial", 12, "bold"), command= lambda: update_func(3)).grid(row=4, column=0, padx=10, pady=0, sticky=W)
-    Radiobutton(frame_update, text='Drink Cost', variable=choice, value=6, font=("Arial", 12, "bold"), command= lambda: update_func(6)).grid(row=5, column=0, padx=10, pady=0, sticky=W)
-    Radiobutton(frame_update, text='Food Cost', variable=choice, value=7, font=("Arial", 12, "bold"), command= lambda: update_func(7)).grid(row=6, column=0, padx=10, pady=0, sticky=W)
-    Radiobutton(frame_update, text='Sub Total', variable=choice, value=8, font=("Arial", 12, "bold"), command= lambda: update_func(8)).grid(row=7, column=0, padx=10, pady=0, sticky=W)
-    Radiobutton(frame_update, text='Total', variable=choice, value=9, font=("Arial", 12, "bold"), command= lambda: update_func(9)).grid(row=8, column=0, padx=10, pady=0, sticky=W)
+    select_label = Label(frame_update, text="Select Attribute:")
+    select_label.config(font=("Arial", 15))
+    select_label.grid(row=4, column=0, padx=10, pady=(10,5))
+
+    Radiobutton(frame_update, text='Bill No.', variable=choice, value=3, font=("Arial", 12, "bold"), command= lambda: update_func(3)).grid(row=5, column=0, padx=10, pady=0, sticky=W)
+    Radiobutton(frame_update, text='Drink Cost', variable=choice, value=6, font=("Arial", 12, "bold"), command= lambda: update_func(6)).grid(row=6, column=0, padx=10, pady=0, sticky=W)
+    Radiobutton(frame_update, text='Food Cost', variable=choice, value=7, font=("Arial", 12, "bold"), command= lambda: update_func(7)).grid(row=7, column=0, padx=10, pady=0, sticky=W)
+    Radiobutton(frame_update, text='Sub Total', variable=choice, value=8, font=("Arial", 12, "bold"), command= lambda: update_func(8)).grid(row=8, column=0, padx=10, pady=0, sticky=W)
+    Radiobutton(frame_update, text='Total', variable=choice, value=9, font=("Arial", 12, "bold"), command= lambda: update_func(9)).grid(row=9, column=0, padx=10, pady=0, sticky=W)
 
 
     new.mainloop()
