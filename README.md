@@ -1,5 +1,5 @@
 # Python-tkinter project 
-## Database Management System ✨
+## Database Management System 🌟
 
 ### This python project is a restaurant management system which can do the following :
 
